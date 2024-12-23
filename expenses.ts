@@ -1,12 +1,34 @@
 import { Hono } from "hono";
 
+type Expense = {
+    id: number,
+    title: string,
+    amount : number
+}
+
+const fakeExepenses: Expense[] = [
+    {
+        id: 1,
+        title: "test",
+        amount: 100
+    }, 
+    {
+        id: 2,
+        title: "test2",
+        amount: 200
+    }
+]
+
 export const expensesRoute = new Hono()
-.get("/", (c) =>{
-    return c.json({expenses: []});
+.get("/", async(c) =>{
+    return c.json({expenses: fakeExepenses});
 })
-.post("/", (c) =>{
-    return c.json({});
-});
+.post("/", async(c) =>{
+    const expense = await c.req.json()
+    console.log({expense})
+
+    return c.json({expense});
+}); 
 // .get("/:id", (c) =>{
 //     return c.json({expenses: []});
 // })
