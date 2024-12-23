@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import z from "zod";
 
 type Expense = {
     id: number,
@@ -19,12 +20,13 @@ const fakeExepenses: Expense[] = [
     }
 ]
 
-export const expensesRoute = new Hono()
+export const  expensesRoute = new Hono()
 .get("/", async(c) =>{
     return c.json({expenses: fakeExepenses});
 })
 .post("/", async(c) =>{
     const expense = await c.req.json()
+    console.log(expense.amount)
     console.log({expense})
 
     return c.json({expense});
