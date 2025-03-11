@@ -2,14 +2,17 @@
   "name": "react_hono_bun",
   "module": "index.ts",
   "type": "module",
-  "scripts":{
-    "start" : "bun index.ts",
-    "dev" : "bun --watch index.ts"
+  "scripts": {
+    "start": "bun index.ts",
+    "dev": "bun --watch index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "hono": "^4.8.4"
   }
 }
